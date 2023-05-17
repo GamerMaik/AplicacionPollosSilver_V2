@@ -1,58 +1,41 @@
 package com.example.aplicacionpollossilver.Adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.aplicacionpollossilver.Domain.CategoryDomain
-import com.example.aplicacionpollossilver.R
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.aplicacionpollossilver.Activity.ShowDetailsActivity
 import com.example.aplicacionpollossilver.Domain.FoodDomain
+import com.example.aplicacionpollossilver.databinding.ViewholderProductBinding
 
-
-class ProductAdapter(private val productDomain: ArrayList<FoodDomain>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflate =
-            LayoutInflater.from(parent.context).inflate(R.layout.viewholder_product, parent, false)
-        return ViewHolder(inflate)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val foodDomain = productDomain[position]
-        holder.title.text = foodDomain.title
-        holder.fee.text = foodDomain.fee.toString()
-
-        val drawableResourceId = holder.itemView.context.resources.getIdentifier(
-            foodDomain.pic,
-            "drawable",
-            holder.itemView.context.packageName
-        )
-
-        Glide.with(holder.itemView.context)
-            .load(drawableResourceId)
-            .into(holder.pic)
-
-        holder.addBtn.setOnClickListener {
-//            val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
-//            intent.putExtra("object", foodDomain)
-//            holder.itemView.context.startActivity(intent)
+data class ProductAdapter(private val productList:List<FoodDomain>, private val context:Context):
+RecyclerView.Adapter<ProductAdapter.ProductViewHolder>()
+{
+    inner class ProductViewHolder(private val binding: ViewholderProductBinding):RecyclerView.ViewHolder(binding.root){
+        fun bind(product:FoodDomain){
+            binding.title.text = product.title
+            binding.pic.setImageResource(product.pic)
+            binding.fee.text= product.fee.toString()
+            itemView.setOnClickListener{
+                val intent= Intent(context, ShowDetailsActivity::class.java)
+                intent.putExtra("title",product.title)
+                intent.putExtra("IdImage",product.pic)
+                intent.putExtra("price",product.fee.toString())
+                context.startActivity(intent)
+            }
         }
     }
-
-    override fun getItemCount(): Int {
-        return productDomain.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding= ViewholderProductBinding.inflate(inflater,parent,false)
+        return ProductViewHolder(binding)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.title)
-        val fee: TextView = itemView.findViewById(R.id.fee)
-        val pic: ImageView = itemView.findViewById(R.id.pic)
-        val addBtn: TextView = itemView.findViewById(R.id.addBtn)
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val product= productList[position]
+        holder.bind(product)
     }
+
+    override fun getItemCount(): Int= productList.size
 }

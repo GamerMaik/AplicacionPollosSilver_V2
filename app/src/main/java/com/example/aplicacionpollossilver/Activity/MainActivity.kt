@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
     private var adapter2: RecyclerView.Adapter<*>?=null
     private lateinit var recyclerViewCategoryList:RecyclerView
     private lateinit var recyclerViewProductsList:RecyclerView
+
+    private lateinit var productAdapter: ProductAdapter
+    private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
@@ -42,19 +45,14 @@ class MainActivity : AppCompatActivity() {
         recyclerViewCategoryList.adapter = adapter
     }
     private fun recyclerViewProduct(){
-        val linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        recyclerViewProductsList=binding.MainRvProducts
-        recyclerViewProductsList.setLayoutManager(linearLayoutManager)
-
-        val foodList= ArrayList<FoodDomain>()
-        foodList.add(FoodDomain("Pepperoni pizza", "pop_1", "slices pepperoni ,mozzarella cheese, fresh oregano,  ground black pepper, pizza sauce", 9.76,0))
-        foodList.add(FoodDomain("Cheese Burger", "pop_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato ", 8.79,1))
-        foodList.add(FoodDomain("Vegetable pizza", "pop_3", " olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 8.5,2))
-        foodList.add(FoodDomain("Pepperoni pizza", "pop_1", "slices pepperoni ,mozzarella cheese, fresh oregano,  ground black pepper, pizza sauce", 9.76,3))
-        foodList.add(FoodDomain("Cheese Burger", "pop_2", "beef, Gouda Cheese, Special sauce, Lettuce, tomato ", 8.79,4))
-        foodList.add(FoodDomain("Vegetable pizza", "pop_3", " olive oil, Vegetable oil, pitted Kalamata, cherry tomatoes, fresh oregano, basil", 8.5,5))
-
-        adapter2 = ProductAdapter(foodList)
-        recyclerViewProductsList.adapter= adapter2
+        val foodList= listOf(
+            FoodDomain("Pizza Vegetarina ",R.drawable.pop_1,18.0),
+            FoodDomain("Hamburguesa King ",R.drawable.pop_2,16.0),
+            FoodDomain("Pizza Simple ",R.drawable.pop_3,15.0)
+        )
+        recyclerViewProductsList = binding.MainRvProducts
+        binding.MainRvProducts.layoutManager= LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        productAdapter= ProductAdapter(foodList,this)
+        recyclerViewProductsList.adapter= productAdapter
     }
 }
