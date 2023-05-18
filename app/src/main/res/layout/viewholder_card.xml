@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
@@ -38,12 +39,13 @@
 
     <ImageView
         android:id="@+id/minusCardBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/picCard"
-        app:layout_constraintStart_toEndOf="@+id/picCard"
+        android:layout_width="46dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView21"
+        app:layout_constraintStart_toEndOf="@+id/QuantityProductCard"
         app:srcCompat="@drawable/minus" />
 
     <TextView
@@ -53,21 +55,11 @@
         android:layout_marginStart="8dp"
         android:text="1"
         android:textColor="#373b54"
-        android:textStyle="bold"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/minusCardBtn"
-        app:layout_constraintStart_toEndOf="@+id/minusCardBtn"
-        app:layout_constraintTop_toTopOf="@+id/minusCardBtn" />
-
-    <ImageView
-        android:id="@+id/plusCardBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/minusCardBtn"
-        app:layout_constraintStart_toEndOf="@+id/QuantityProductCard"
-        app:layout_constraintTop_toTopOf="@+id/minusCardBtn"
-        app:srcCompat="@drawable/plus" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/picCard"
+        app:layout_constraintTop_toBottomOf="@+id/CardTitle" />
 
     <TextView
         android:id="@+id/UnitPriceProduct"
@@ -100,9 +92,9 @@
         android:textColor="#373b54"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/plusCardBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/UnitPriceProduct"
-        app:layout_constraintTop_toTopOf="@+id/plusCardBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/UnitPriceProduct" />
 
     <TextView
         android:id="@+id/textView21"
@@ -114,5 +106,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/TotalPriceCard"
         app:layout_constraintEnd_toStartOf="@+id/TotalPriceCard"
-        app:layout_constraintTop_toTopOf="@+id/TotalPriceCard" />
+        app:layout_constraintTop_toTopOf="@+id/TotalPriceCard"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.aplicacionpollossilver.Activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         recyclerViewCategory()
         recyclerViewProduct()
+
+        binding.ListaBtn.setOnClickListener {
+            val intent= Intent(this, CartListActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun recyclerViewCategory() {

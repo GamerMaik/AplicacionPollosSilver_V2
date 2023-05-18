@@ -12,17 +12,6 @@ import com.example.aplicacionpollossilver.databinding.ActivityShowDetailsBinding
 
 class ShowDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShowDetailsBinding
-    //Texts
-    private lateinit var addToCardBtn:TextView
-    private lateinit var feeText:TextView
-    private lateinit var descriptionText:TextView
-    private lateinit var numberOrderTxt:TextView
-    //buttons
-    private lateinit var plusBtn: ImageView
-    private lateinit var minusBtn: ImageView
-    private lateinit var picFood: ImageView
-    //Domain
-    private lateinit var objecto:FoodDomain
     //Variables
     private var numberOrder = 1
     private val maxNumber = 5
@@ -60,7 +49,7 @@ class ShowDetailsActivity : AppCompatActivity() {
         } else {
             ProductManager.productList.add(newProduct)
         }
-        val intent = Intent(this, CartListActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
     private fun updateNumberText() {
