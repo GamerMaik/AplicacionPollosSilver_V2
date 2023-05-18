@@ -22,6 +22,7 @@ RecyclerView.Adapter<ProductAdapter.ProductViewHolder>()
                 intent.putExtra("title",product.title)
                 intent.putExtra("IdImage",product.pic)
                 intent.putExtra("price",product.fee.toString())
+                intent.putExtra("description",product.description)
                 context.startActivity(intent)
             }
         }

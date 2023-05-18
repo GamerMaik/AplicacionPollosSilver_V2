@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
     }
     private fun recyclerViewProduct(){
         val foodList= listOf(
-            FoodDomain("Pizza Vegetarina ",R.drawable.pop_1,18.0),
-            FoodDomain("Hamburguesa King ",R.drawable.pop_2,16.0),
-            FoodDomain("Pizza Simple ",R.drawable.pop_3,15.0)
+            FoodDomain("Pizza Vegetarina ",R.drawable.pop_1,18.0,0,"es una pizza"),
+            FoodDomain("Hamburguesa King ",R.drawable.pop_2,16.0,0,"es una hamburguesa"),
+            FoodDomain("Pizza Simple ",R.drawable.pop_3,15.0,0,"es otra pizza")
         )
         recyclerViewProductsList = binding.MainRvProducts
         binding.MainRvProducts.layoutManager= LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
