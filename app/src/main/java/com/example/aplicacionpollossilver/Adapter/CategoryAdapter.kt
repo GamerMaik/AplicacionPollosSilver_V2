@@ -30,19 +30,7 @@ class CategoryAdapter(private val categoryDomains: ArrayList<CategoryDomain>) : 
             }
             1 -> {
                 holder.mainLayout.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context,R.drawable.cat_background2))
-                "cat_2"
-            }
-            2 -> {
-                holder.mainLayout.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context,R.drawable.cat_background2))
-                "cat_3"
-            }
-            3 -> {
-                holder.mainLayout.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context,R.drawable.cat_background2))
                 "cat_4"
-            }
-            4 -> {
-                holder.mainLayout.setBackgroundDrawable(ContextCompat.getDrawable(holder.itemView.context,R.drawable.cat_background2))
-                "cat_5"
             }
 
             else -> ""

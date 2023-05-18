@@ -13,13 +13,20 @@ class IntroActivity : AppCompatActivity() {
         binding= ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var User =true
         binding.BtnEmpezar.setOnClickListener {
-            val intent= Intent(this,MainActivity::class.java).apply {
+            if (!User){
+                val intent= Intent(this,MainActivity::class.java).apply {
+                    //Se envia o se comprueba lo que sea antes de pasar la siguiente pantalla
+                    intent.putExtra("nombre","Miguel")
+                }
+                startActivity(intent)
+            }else{
+                val intent= Intent(this,AdminActivity::class.java).apply {
 
-                //Se envia o se comprueba lo que sea antes de pasar la siguiente pantalla
-
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
         }
     }
 }

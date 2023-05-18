@@ -40,7 +40,11 @@ class CartListActivity : AppCompatActivity() {
             val intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
-        binding.totalTxt.text=calculateTotal().toString()
+        binding.totalTxt.text="Bs. ${calculateTotal().toString()}"
+        binding.BtnRealizarPedido.setOnClickListener {
+            Toast.makeText(this,"Se realizo el pedido",Toast.LENGTH_SHORT).show()
+            RealizarPedido()
+        }
     }
     fun initList(){
         val productList = ProductManager.productList
@@ -66,6 +70,8 @@ class CartListActivity : AppCompatActivity() {
         return total
     }
     fun RealizarPedido(){
-
+        ProductManager.productList.clear()
+        var intent= Intent(this,MainActivity::class.java)
+        startActivity(intent)
     }
 }

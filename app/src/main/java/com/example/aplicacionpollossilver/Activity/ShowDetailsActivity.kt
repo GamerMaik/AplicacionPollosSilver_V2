@@ -29,10 +29,10 @@ class ShowDetailsActivity : AppCompatActivity() {
         updateNumberText()
         getProductInfo(title, price, image, description)
         if (title != null && price != null && description != null) {
-            setupListeners(title, price, image, numberOrder, description)
+            setupListeners( price, image)
         }
     }
-    private fun setupListeners(title:String, price:String, image:Int, cantidad: Int, descriptionText: String) {
+    private fun setupListeners( price:String, image:Int) {
         binding.plusBtn.setOnClickListener { incrementQuantity() }
         binding.minusBtn.setOnClickListener { decrementQuantity() }
         binding.addToCardBtn.setOnClickListener { addToList(price, image) }
@@ -41,7 +41,8 @@ class ShowDetailsActivity : AppCompatActivity() {
     private fun addToList(price: String, image: Int) {
         val title = binding.titleTxt.text.toString()
         val quantity = binding.numberOrderTxt.text.toString().toInt()
-        val description = binding.descriptionTxt.text.toString()
+        var estado = "Pedido"
+        val description = estado
         val newProduct = Product(title, image, price.toDouble(), quantity, description)
         val existingProduct = ProductManager.productList.find { it.title == title }
         if (existingProduct != null) {
