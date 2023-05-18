@@ -13,7 +13,7 @@ class IntroActivity : AppCompatActivity() {
         binding= ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var User =true
+        var User =false
         binding.BtnEmpezar.setOnClickListener {
             if (!User){
                 val intent= Intent(this,MainActivity::class.java).apply {

@@ -90,7 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_margin="16dp"
-        android:text="Add to Card"
+        android:text="Añadir al la lista"
         android:background="@drawable/orange_button"
         android:gravity="center"
         android:textColor="#ffffff"
